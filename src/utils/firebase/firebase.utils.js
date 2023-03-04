@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 import {
 	getAuth,
 	signInWithRedirect,
@@ -8,7 +8,7 @@ import {
 	signInWithEmailAndPassword,
 	signOut,
 	onAuthStateChanged,
-} from "firebase/auth";
+} from 'firebase/auth';
 import {
 	getFirestore,
 	doc,
@@ -18,15 +18,15 @@ import {
 	writeBatch,
 	query,
 	getDocs,
-} from "firebase/firestore";
+} from 'firebase/firestore';
 
 const firebaseConfig = {
-	apiKey: "AIzaSyCLcsYHux5i2yYyhF4BApxRtalxJ76R4H4",
-	authDomain: "crwn-clothing-db-3d7f7.firebaseapp.com",
-	projectId: "crwn-clothing-db-3d7f7",
-	storageBucket: "crwn-clothing-db-3d7f7.appspot.com",
-	messagingSenderId: "725566952123",
-	appId: "1:725566952123:web:3ccfef935d733ae9644f9e",
+	apiKey: 'AIzaSyCLcsYHux5i2yYyhF4BApxRtalxJ76R4H4',
+	authDomain: 'crwn-clothing-db-3d7f7.firebaseapp.com',
+	projectId: 'crwn-clothing-db-3d7f7',
+	storageBucket: 'crwn-clothing-db-3d7f7.appspot.com',
+	messagingSenderId: '725566952123',
+	appId: '1:725566952123:web:3ccfef935d733ae9644f9e',
 };
 
 // eslint-disable-next-line
@@ -35,7 +35,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 const googleProvider = new GoogleAuthProvider();
 
 googleProvider.setCustomParameters({
-	prompt: "select_account",
+	prompt: 'select_account',
 });
 
 export const auth = getAuth();
@@ -62,7 +62,7 @@ export const addCollectionAndDocuments = async (
 };
 
 export const getCategoriesAndDocuments = async () => {
-	const collectionRef = collection(db, "categories");
+	const collectionRef = collection(db, 'categories');
 	const q = query(collectionRef);
 
 	const querySnapshot = await getDocs(q);
@@ -81,7 +81,7 @@ export const createUserDocumentFromAuth = async (
 ) => {
 	if (!userAuth) return;
 
-	const userDocRef = doc(db, "users", userAuth.uid);
+	const userDocRef = doc(db, 'users', userAuth.uid);
 
 	const userSnapshot = await getDoc(userDocRef);
 
@@ -97,7 +97,7 @@ export const createUserDocumentFromAuth = async (
 				...additionalInformation,
 			});
 		} catch (error) {
-			console.log("error creating the user", error.message);
+			console.log('error creating the user', error.message);
 		}
 	}
 
@@ -110,7 +110,7 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
 	return await createUserWithEmailAndPassword(auth, email, password);
 };
 
-export const signInUserWithEmailAndPassword = async (email, password) => {
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 	if (!email || !password) return;
 
 	return await signInWithEmailAndPassword(auth, email, password);
