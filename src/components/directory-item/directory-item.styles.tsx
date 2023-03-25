@@ -10,6 +10,7 @@ export const BackgroundImage = styled.div`
 
 export const Body = styled.div`
 	height: 90px;
+	max-width: 40%;
 	padding: 0 25px;
 	display: flex;
 	flex-direction: column;
@@ -65,4 +66,7 @@ export const DirectoryItemContainer = styled.div`
 			opacity: 0.9;
 		}
 	}
+	@media screen and (max-width: 800px) {
+    height: 200px;
+  }
 `;

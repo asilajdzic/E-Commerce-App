@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { InvertedButton } from '../button/button.styles';
+
 export const ProductCartContainer = styled.div`
 	width: 100%;
 	display: flex;
@@ -33,6 +35,31 @@ export const ProductCartContainer = styled.div`
 			display: flex;
 		}
 	}
+	@media screen and (max-width: 800px) {
+    width: 40vw;
+    &:hover {
+      .image {
+        opacity: unset;
+      }
+      button {
+        opacity: unset;
+      }
+    }
+  }
+`;
+
+export const AddButton = styled(InvertedButton)`
+  width: 80%;
+  opacity: 0.7;
+  position: absolute;
+  top: 255px;
+  display: none;
+  @media screen and (max-width: 800px) {
+    display: block;
+    opacity: 0.9;
+    min-width: unset;
+    padding: 0 10px;
+  }
 `;
 
 export const Footer = styled.div`
