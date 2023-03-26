@@ -9,7 +9,7 @@ export const CheckoutContainer = styled.div`
 	margin: 50px auto 0;
 	@media screen and (max-width: 800px) {
     width: 90%;
-		font-size: 18px;
+		font-size: 14px;
   }
 `;
 
