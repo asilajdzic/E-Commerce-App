@@ -11,6 +11,17 @@ import { BUTTON_TYPE_CLASSES } from '../button/button.component';
 import { PaymentButton, PaymentFormContainer } from './payment-form.styles';
 
 const PaymentForm = () => {
+	const CARD_ELEMENT_OPTIONS = {
+    		style: {
+      		base: {
+        		padding: "10px",
+        		"@media (max-width: 600px)": {
+          		padding: "20px",
+        		},
+      		},
+		},
+  	};
+	
 	const stripe = useStripe();
 	const elements = useElements();
 	const amount = useSelector(selectCartTotal);
@@ -62,7 +73,7 @@ const PaymentForm = () => {
 		<PaymentFormContainer>
 			<FormContainer onSubmit={paymentHandler}>
 				<h2>Credit Card Payment:</h2>
-				<CardElement />
+				<CardElement options={CARD_ELEMENT_OPTIONS}/>
 				<PaymentButton
 					buttonType={BUTTON_TYPE_CLASSES.inverted}
 					isLoading={isProcessingPayment}
